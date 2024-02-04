@@ -1,0 +1,49 @@
+﻿@model TMS.webapp.Models.Teacher
+@{
+
+}
+
+<h1 class="text-center bg-warning-subtle"> Registration This Form</h1>
+<div class="Container mt-5">
+    <div class="border mt-3 p-4">
+
+
+    <form asp-controller="Teacher" asp-action="CreateOrEdit"method="post">
+            <div class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="col-md-12">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+
+            <div class="col-md-12">
+                <label asp-for="Address"></label>
+                 <textarea asp-for="Address" class="form-control" rows="6"></textarea>
+            </div>
+
+
+            <div class="col-12 mt-3">
+                    <button class="btn btn-success" type="submit">Update Data</button>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}

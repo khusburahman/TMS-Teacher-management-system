@@ -1,0 +1,71 @@
+﻿@model IEnumerable<TMS.webapp.Models.Teacher>
+
+@{
+    int IdNo = 1;
+    ViewData["Title"] = "Index";
+}
+<div class="border">
+    <h1 class="text-center bg-success">Teacher List</h1>
+
+
+    <p class="text-center">
+    <a asp-action="CreateOrEdit" asp-controller="Teacher" class="btn btn-sm btn-success">Create New</a>
+</p>
+
+    <table class="table">
+        <thead class="border-2">
+        <tr>
+            <th class="border-2 text-center">
+               #
+            </th>
+
+            <th class="border-2 text-center">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="border-2 text-center">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="border-2 text-center">
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th class="border-2 text-center">
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th class="border-2 text-center">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="border-2">
+                @IdNo
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td></td>
+            <td>
+                <a asp-action="CreateOrEdit" asp-controller="Teacher" asp-route-id="@item.Id" class="btn btn-sm btn-success">Edit</a> |
+
+                <a asp-action="Details" asp-controller="Teacher" asp-route-Id="@item.Id" class="btn btn-sm btn-primary">Details</a> |
+
+
+                <a asp-action="Delete" onclick="return confirm('Are you sure delete this item?')" asp-controller="Teacher" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        IdNo++;
+}
+    </tbody>
+</table>
+</div>
